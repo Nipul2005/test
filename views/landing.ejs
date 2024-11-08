@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postify</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="/images/circle_fav.png" type="image/x-icon" class="rounded-full">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            font-family: "Roboto", sans-serif;
+            color: #3730a3;
+            user-select: none;
+            letter-spacing: 0.2px;
+        }
+
+       
+        body::-webkit-scrollbar {
+            width: 8px; /* Width of the scrollbar */
+            background: white;
+        }
+
+        /* Optional: Style the scrollbar track (the area behind the scrollbar) */
+        body::-webkit-scrollbar-track {
+            width: 5px;
+            background: white;
+        }
+
+        /* Optional: Style the scrollbar thumb (the draggable part) */
+        body::-webkit-scrollbar-thumb {
+            background-color: #4338CA; /* Scrollbar thumb color */
+            border-radius: 10px; /* Rounded corners for the thumb */
+            border: 2px solid white;
+        }
+
+        #mobile-menu{
+            width: 100%;
+            height: 0rem;
+            transition: height 0.4s ease-in;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(120%);
+                top: -25px;
+                left: 35%;
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(0);
+                top: -10px;
+                left: 35%;
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+                opacity: .8;
+                }
+            }
+
+        .bouces{
+            animation: bounce 1.5s 1;
+            margin:auto
+        }
+
+    
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans ">
+
+    
+    <!-- Navbar -->
+    <header class="shadow-md bg-white sticky top-0 z-10">
+        <div class="container mx-auto p-4 flex justify-between items-center">
+            <h1 class="text-2xl md:text-2xl font-bold text-indigo-800">Postify</h1>
+            <nav class="hidden md:flex">
+                <ul class="flex space-x-4 text-sm md:text-base">
+                    <li><a href="/create" class="hover:text-indigo-500 transition">Home</a></li>
+                    <li><a href="/post" class="hover:text-indigo-500 transition">Posts</a></li>
+                    <li><a href="/profile" class="hover:text-indigo-500 transition">About</a></li>
+                    <li><a href="auth" class="hover:text-indigo-500 transition">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-indigo-800 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <button class="bg-indigo-500 text-white px-4 py-2 md:px-4 md:py-2 rounded-lg hover:bg-indigo-700 transition hidden md:block signUp" onclick="openform()">Sign Up</button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="fixed inset-0  z-20 shadow-md overflow-hidden" >
+        <div class="flex justify-between items-center  px-4  h-16">
+            <h1 class="text-2xl font-bold text-indigo-800">Postify</h1>
+            <button id="close-menu" class="text-indigo-800 focus:outline-none">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+    <ul class="flex flex-col items-start space-y-4  flex-wrap px-4 h-60">
+        <li><a href="/create" class="hover:text-indigo-500 transition">Home</a></li>
+        <li><a href="/post" class="hover:text-indigo-500 transition">Posts</a></li>
+        <li><a href="/profile" class="hover:text-indigo-500 transition">About</a></li>
+        <li><a href="auth" class="hover:text-indigo-500 transition">Contact</a></li>
+<li><button class="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition signUp" onclick="openform()">Sign Up</button></li>
+           
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-indigo-50 py-12 md:py-16">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Welcome to <span class="text-indigo-800 ">Postify!</span></h2>
+            <p class="text-base md:text-lg text-gray-600 mb-8">Share your thoughts, ideas, and stories with the world.</p>
+            <button class="bg-indigo-500 text-white px-4 py-2 md:px-6 md:py-3 rounded-lg hover:bg-indigo-700 transition signUp" onclick="openform()">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-12 md:py-16">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="p-6 md:p-8 shadow-md rounded-lg bg-white">
+                <div class="text-blue-500 text-3xl mb-4">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold mb-2">Create Posts</h3>
+                <p class="text-gray-600">Easily create posts and share them with your followers.</p>
+            </div>
+            <div class="p-6 md:p-8 shadow-md rounded-lg bg-white">
+                <div class="text-blue-500 text-3xl mb-4">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold mb-2">Engage with Users</h3>
+                <p class="text-gray-600">Like, comment, and share other users’ posts.</p>
+            </div>
+            <div class="p-6 md:p-8 shadow-md rounded-lg bg-white">
+                <div class="text-blue-500 text-3xl mb-4">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold mb-2">Secure Platform</h3>
+                <p class="text-gray-600">Your posts are safe with our strong security protocols.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-12 md:py-16 text-white bg-indigo-50">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 ">Start Posting Now!</h2>
+            <p class="text-base md:text-lg mb-8 ">Join the community and start sharing your posts today.</p>
+            <button class="bg-transparent px-4 py-2 md:px-6 md:py-2 rounded-lg border-2 border-indigo-600 hover:bg-indigo-900 transition hover:text-white hover:border-indigo-900 signUp" onclick="openform()">Sign Up</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <!-- adding new content -->
+
+        <!-- flash box code -->
+        <div id="flashMessage" class="fixed w-full max-w-sm mx-auto md:left-[15%] sm:[-10%] p-2 rounded-lg shadow-lg text-center bg-indigo-300  z-30" style="top: -25px; left: 50%; transform: translate(-50%, -50%); ">
+            <p id="flashText" class="text-xl font-normal text-[#f7f7f7]">From Nipul</p>
+        </div>   
+         <!-- flash code -->
+    <div id="form_reg" class="absolute inset-0 flex justify-center items-center bg-indigo-50 bg-opacity-75 z-20 h-full hidden">
+        <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md relative">
+            <button id="closeButton" class="absolute top-3 right-5 text-[#f7f7f7] hover:text-white" onclick="closeForm()">
+                <i class="fas fa-times text-xl text-indigo-500 hover:text-indigo-400"></i>
+            </button>
+            <div class="flex justify-center mb-6">
+                <button id="signInTab" class="text-indigo-400 font-semibold  py-2 px-4 bg-indigo-500 text-white rounded-l-lg hover:bg-indigo-600 hover:text-white" onclick="showSignIn()">Log In</button>
+                <button id="signUpTab" class="text-indigo-400 font-semibold py-2 px-4 bg-indigo-50 rounded-r-lg hover:bg-indigo-600 hover:text-white" onclick="showSignUp()">Sign Up</button>
+            </div>
+
+            <!-- Sign In Form -->
+            <div id="signInForm" class="sign-form">
+                <form action="/signin" method="POST" id="sign_in">
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-left" for="signInEmail">Email*</label>
+                        <div class="flex items-center border rounded-lg bg-indigo-100 p-2">
+                            <i class="fas fa-envelope text-indigo-700"></i>
+                            <input class="ml-2 w-full bg-transparent focus:outline-none input:bg-gray-700" type="email" name="email" placeholder="Enter your email" id="in_email" >
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-left " for="signInPassword">Password*</label>
+                        <div class="flex items-center border rounded-lg bg-gray-700 p-2 bg-indigo-100">
+                            <i class="fa-solid fa-eye-slash text-indigo-700 eye cursor-pointer"></i>
+                            <input class="ml-2 w-full bg-transparent focus:outline-none" type="password"  name="password" placeholder="Enter your password" id="in_password">
+                        </div>
+                    </div>
+                    <button class="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg font-semibold" type="submit">Login</button>
+                </form>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signUpForm" class="sign-form hidden">
+                <form action="/signup" method="post" id="sign_up">
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-left " for="signUpName">Name*</label>
+                        <div class="flex items-center border rounded-lg bg-gray-700 p-2 bg-indigo-100">
+                            <i class="fas fa-user text-indigo-700"></i>
+                            <input class="ml-2 w-full bg-transparent focus:outline-none" type="text" id="signUpName" name="name" placeholder="Enter your name">
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-left" for="signUpEmail">Email*</label>
+                        <div class="flex items-center border rounded-lg bg-gray-700 p-2 bg-indigo-100">
+                            <i class="fas fa-envelope text-indigo-700"></i>
+                            <input class="ml-2 w-full bg-transparent focus:outline-none" type="email" id="signUpEmail" name="email" placeholder="Enter your email" >
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-left" for="signUpPassword">Password*</label>
+                        <div class="flex items-center border rounded-lg bg-gray-700 p-2 bg-indigo-100">
+                            <i class="fa-solid fa-eye-slash text-indigo-700 eye cursor-pointer"></i>
+                            <input class="ml-2 w-full bg-transparent focus:outline-none" type="password" id="signUpPassword" name="password" placeholder="Enter your password">
+                        </div>
+                    </div>
+                    <button class="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg font-semibold" type="submit">Sign Up</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- new content end here -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p class="text-sm text-white">© 2024 Postify. All rights reserved.</p>
+            <p class="text-sm text-white">Follow us on <a href="#" class="text-indigo-400 hover:underline">Twitter</a>, <a href="#" class="text-indigo-400 hover:underline">Facebook</a></p>
+        </div>
+    </footer> 
+
+
+    <script src="flash.js" async></script>
+    <script>
+        // JavaScript for hamburger menu
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const closeMenu = document.getElementById("close-menu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.style.height='22rem';
+        });
+
+        closeMenu.addEventListener("click", () => {
+            mobileMenu.style.height='0rem';
+        });
+    </script>
+</body>
+</html>
