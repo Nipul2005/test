@@ -188,5 +188,5 @@ app.get('/posting', verify, async(req,res)=>{
     return res.json({allpost});
 })
 
-console.log(process.env.PORT, process.env.MONGO_URL)
+
 app.listen(Port)
