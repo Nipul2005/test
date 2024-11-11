@@ -12,6 +12,9 @@ const posts=require('./model/post.js');
 const upload=require('./config/uplaod.js')
 const weekInMilliseconds = 7 * 24 * 60 * 60 * 1000; // 1 week
 
+const cors = require('cors');
+app.use(cors());
+app.use('/uploads', express.static('uploads'));
 const Port=process.env.PORT || 3000;
 
 app.use(cookie())
